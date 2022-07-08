@@ -12,7 +12,7 @@ import {Context} from '../context/BlogContext';
 
 import Icon from 'react-native-vector-icons/Feather';
 
-export default function IndexScreen() {
+export default function IndexScreen({navigation}) {
   const {state, addBlogPost, deleteBlogPost} = useContext(Context);
   return (
     <View>
@@ -22,14 +22,17 @@ export default function IndexScreen() {
         keyExtractor={blogPost => blogPost.title}
         renderItem={({item}) => {
           return (
-            <View style={styles.row}>
-              <Text style={styles.title}>
-                {item.title} - {item.id}
-              </Text>
-              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-                <Icon name="trash" style={styles.icon} />
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Show', {id: item.id})}>
+              <View style={styles.row}>
+                <Text style={styles.title}>
+                  {item.title} - {item.id}
+                </Text>
+                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                  <Icon name="trash" style={styles.icon} />
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
           );
         }}
       />
