@@ -7,6 +7,8 @@ import {Provider} from './src/context/BlogContext';
 import IndexScreen from './src/screens/IndexScreen';
 import ShowScreen from './src/screens/ShowScreen';
 import CreateScreen from './src/screens/CreateScreen';
+import {TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +20,9 @@ export default function App() {
           <Stack.Screen
             name="Index"
             component={IndexScreen}
-            options={{title: 'Blog'}}
+            options={{
+              title: 'Blog',
+            }}
           />
           <Stack.Screen name="Show" component={ShowScreen} />
           <Stack.Screen name="Create" component={CreateScreen} />

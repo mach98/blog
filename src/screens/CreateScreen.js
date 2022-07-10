@@ -1,10 +1,16 @@
-import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
 
 export default function CreateScreen() {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   return (
     <View>
-      <Text>CreateScreen</Text>
+      <Text>Enter Title:</Text>
+      <TextInput />
+
+      <Text>Enter Content:</Text>
+      <TextInput />
     </View>
   );
 }

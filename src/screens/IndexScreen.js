@@ -6,7 +6,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import React, {useContext} from 'react';
+import React, {useContext, useLayoutEffect} from 'react';
 
 import {Context} from '../context/BlogContext';
 
@@ -14,6 +14,17 @@ import Icon from 'react-native-vector-icons/Feather';
 
 export default function IndexScreen({navigation}) {
   const {state, addBlogPost, deleteBlogPost} = useContext(Context);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+          <Icon name="plus" size={30} />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <View>
       <Button title="Add Post" onPress={addBlogPost} />
